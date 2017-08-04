@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+<title>Get a Whiff of This: 日本語あらすじと解説</title>
+
+<meta name="description" content="">
+<meta name="author" content="Rastam Hadi">
+<meta name="generator" content="reveal-ck 3.5.0">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/blood.css" id="theme">
+
+<!-- Code syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<link rel="stylesheet" href="css/reveal-ck.css">
+
+
+<!-- Printing and PDF exports -->
+<script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+
+  </head>
+
+  <body>
+    <div class="reveal">
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div class="slides">
+    <section>
+
+<h1>Get a Whiff of This</h1>
+<h2>日本語あらすじと解説</h2>
+
+<p><a href="https://rastamhadi.github.io/get_a_whiff_of_this">https://rastamhadi.github.io/get_a_whiff_of_this</a></p>
+
+<aside class="notes">
+
+<p>お疲れ様です。ラスタムです。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/28874493-03251fc6-77cd-11e7-9d3f-9b7efaeda3ec.png" alt="Get a Whiff of This"></p>
+
+<p><a href="https://speakerdeck.com/skmetz/get-a-whiff-of-this">https://speakerdeck.com/skmetz/get-a-whiff-of-this</a><br>
+<a href="http://confreaks.tv/videos/railsconf2016-get-a-whiff-of-this">http://confreaks.tv/videos/railsconf2016-get-a-whiff-of-this</a></p>
+
+<aside class="notes">
+
+<p>Get a Whiff of This は、去年の RailsConf のトークです。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://static1.squarespace.com/static/5527cdbae4b0ee7b897c2111/t/5856c8712e69cfba3cc84452/1482082426895/" alt="Practical Object-Oriented Design in Ruby"> 　 <img src="http://ecx.images-amazon.com/images/I/51-TCt0H4UL.jpg" alt="オブジェクト指向設計実践ガイド"></p>
+
+<aside class="notes">
+
+<p>プレゼンターは、Practical Object-Oriented Design in Ruby（オブジェクト指向設計実践ガイド）でお馴染みの…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/28874406-b1cd5558-77cc-11e7-98fa-d6cd9be65984.png" alt="Sandi Metz"></p>
+
+<p><a href="https://www.sandimetz.com/">https://www.sandimetz.com/</a></p>
+
+<aside class="notes">
+
+<p>… Sandi Metz 先生。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h1>Get a Whiff of This</h1>
+
+<aside class="notes">
+
+<p>このトークは、簡単にいうとコードスメルの話です。「Get a Whiff of This」というタイトルも、日本語に訳すと…</p>
+
+</aside>
+
+</section>
+<section>
+
+<h1>これ…</h1>
+<h2>ちょっと嗅いでみ？</h2>
+
+<p><img class="emoji" alt=":nose:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f443.png"></p>
+
+<aside class="notes">
+
+<p>…「これ…ちょっと嗅いでみ？」ってなります。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/28880056-d1c47b68-77de-11e7-86ec-ab7f046c36ae.png" alt="Refactoring"> 　 <img src="https://user-images.githubusercontent.com/1012322/28879979-92884254-77de-11e7-8993-ba8c2171a9c6.png" alt="リファクタリング"></p>
+
+<aside class="notes">
+
+<p>コードスメルは昔々 Refactoring 本で生まれたもので…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://media.simplecast.com/episode/image/11199/thumb_1441192692-artwork.jpg" alt="Kent Beck"></p>
+
+<aside class="notes">
+
+<p>…生みの親は Kent Beck 先生です。</p>
+
+</aside>
+
+</section>
+<section>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Long Method</td>
+      <td>Large Class</td>
+      <td>Comments</td>
+    </tr>
+    <tr>
+      <td>Message Chains</td>
+      <td>Data Clumps</td>
+      <td>Lazy Class</td>
+    </tr>
+    <tr>
+      <td>Temporary Field</td>
+      <td>Refused Bequest</td>
+      <td>Data Class</td>
+    </tr>
+    <tr>
+      <td>Divergent Change</td>
+      <td>Switch Statements</td>
+      <td>Middle Man</td>
+    </tr>
+    <tr>
+      <td>Duplicate Code</td>
+      <td>Speculative Generality</td>
+      <td>Feature Envy</td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="notes">
+
+<p>全部で 22 個あります。</p>
+
+</aside>
+
+</section>
+<section>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Shotgun Surgery</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Inappropriate Intimacy</td>
+      <td>Long Parameter List</td>
+    </tr>
+    <tr>
+      <td>Primitive Obsession</td>
+      <td>Incomplete Library Client</td>
+    </tr>
+    <tr>
+      <td>Parallel Inheritance Hierarchies</td>
+      <td>Alternative Classes with Different Interfaces</td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="notes">
+
+<p>1 スライドに入らないぐらいの数！Sandi 先生も頭がパンクしちゃったらしい。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/28875759-ba146008-77d1-11e7-90be-852298df4ab6.png" alt="Subjective evaluation of software evolvability using code smells: An empirical study"></p>
+
+<p>Mäntylä, M. V. and Lassenius, C.<br>
+<a href="http://mikamantyla.eu/BadCodeSmellsTaxonomy.html">“Subjective Evaluation of Software Evolvability<br>
+Using Code Smells: An Empirical Study”.</a><br>
+Journal of Empirical Software Engineering,<br>
+vol. 11, no. 3, 2006, pp. 395-431</p>
+
+<aside class="notes">
+
+<p>良かったことに Mika Mäntylä 博士がこの論文で、5 つのカテゴリに小分けしてくれたおかげで…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p>Bloaters<br>
+Tool Abusers<br>
+Change Preventers<br>
+Dispensables<br>
+Couplers</p>
+
+<aside class="notes">
+
+<p>…もうちょっと消化しやすくなりました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>Bloaters</h2>
+
+<p>Large Class<br>
+Long Method<br>
+Long Parameter List<br>
+Primitive Obsession<br>
+Data Clumps</p>
+
+<aside class="notes">
+
+<p>「デカすぎるだろう？」と思わせるコードスメル。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>Tool Abusers</h2>
+
+<p>Alternative Classes with Different Interfaces<br>
+Switch Statements<br>
+Refused Bequest<br>
+Temporary Field</p>
+
+<aside class="notes">
+
+<p>オブジェクト指向の悪用で臭ったコードスメル。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>Change Preventers</h2>
+
+<p>Parallel Inheritance Hierarchies<br>
+Divergent Change<br>
+Shotgun Surgery</p>
+
+<aside class="notes">
+
+<p>変更の妨げになるコードスメル。しかしこのスメルに関しては、仕様変更の確率が低ければ、修正しなくていいだろう、と Sandi 先生が主張しました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>Dispensables</h2>
+
+<p>Speculative Generality<br>
+Duplicate Code<br>
+Data class<br>
+Lazy class</p>
+
+<aside class="notes">
+
+<p>この辺は「要らないだろう」と思わせる YAGNI 臭。Speculative Generality は特にそうです。「いずれはもしかして必要になるかもしれない」という機能の実装がこいつに当てはまります。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>Couplers</h2>
+
+<p>Inappropriate Intimacy<br>
+Message Chains<br>
+Feature Envy<br>
+Middle Man</p>
+
+<aside class="notes">
+
+<p>最後は密結合。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h1>臭い？</h1>
+
+<p><img class="emoji" alt=":hankey:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a9.png"></p>
+
+<aside class="notes">
+
+<p>「コードスメルがある＝コードが悪い」と思われがちだが、果たしてそうなの？と言い残した Sandi 先生。そこからコードサンプルに進みました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">class Foo
+  def sales_total(params)
+    start_date = Date.parse(params[:starting])
+    end_date   = Date.parse(params[:ending])
+
+    Sale.where(date: start_date..end_date).sum(:cost)
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby">class Bar
+  def weekly_sales_total(params)
+    start_date = Date.parse(params[:starting])
+    end_date   = start_date + 6.days
+
+    Sale.where(date: start_date..end_date).sum(:cost)
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby">class Baz
+  def expense_total(params)
+    start_date = Date.parse(params[:starting]) rescue Date.today
+    end_date   = Date.parse(params[:ending])   rescue start_date
+
+    Expense.where(date: start_date..end_date).sum(:cost)
+  end
+end
+</code></pre>
+
+<aside class="notes">
+
+<p>ある期間中の売上や消費の合計を ActiveRecord っぽいモデルから取得しているメソッド群。start_date には必ず end_date が付き物になっている、Data Clump の匂いがします。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>Data Clump</h2>
+
+<h4>→ Extract Class</h4>
+
+<pre><code class="language-ruby">class DateRange
+  def initialize(starting, ending: nil)
+    @starting = Date.parse(starting) rescue Date.today
+    @ending   = Date.parse(ending)   rescue @starting
+  end
+
+  def range
+    @starting..@ending
+  end
+
+  def week_range
+    @starting..(@starting + 6)
+  end
+end
+</code></pre>
+
+<aside class="notes">
+
+<p>Refactoring 本では Data Clump の解決は Extract Class。というわけで DateRange を抽出しました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">class Foo
+  def sales_total(params)
+    range = DateRange.new(params[:starting], params[:ending]).range
+
+    Sale.where(date: range).sum(:cost)
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby">class Bar
+  def weekly_sales_total(params)
+    range = DateRange.new(params[:starting]).week_range
+
+    Sale.where(date: range).sum(:cost)
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby">class Baz
+  def expense_total(params)
+    range = DateRange.new(params[:starting], params[:ending]).range
+
+    Expense.where(date: range).sum(:cost)
+  end
+end
+</code></pre>
+
+<aside class="notes">
+
+<p>置き換えるとこうなります。続いて、Sandi 先生は where と sum のチェーンがかなり気に入らなかったみたいです。デメテル法則違反だから。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>Message Chain</h2>
+
+<h4>→ Hide Delegate</h4>
+
+<pre><code class="language-ruby">class Sale &lt; Persistance
+  def self.total(within:)
+    where(date: within).sum(:cost)
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby">class Expense &lt; Persistance
+  def self.total(within:)
+    where(date: within).sum(:cost)
+  end
+end
+</code></pre>
+
+<aside class="notes">
+
+<p>コードスメルでいうと Message Chain になります。解決策は Hide Delegate。Sale と Expense のスコープにすることで。</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">class Foo
+  def sales_total(params)
+    range = DateRange.new(params[:starting], params[:ending]).range
+
+    Sale.total(within: range)
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby">class Bar
+  def weekly_sales_total(params)
+    range = DateRange.new(params[:starting]).week_range
+
+    Sale.total(within: range)
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby">class Baz
+  def expense_total(params)
+    range = DateRange.new(params[:starting], params[:ending]).range
+
+    Expense.total(within: range)
+  end
+end
+</code></pre>
+
+<aside class="notes">
+
+<p>次はコードスメルではないが、Sandi 先生は永続化レイヤーへの依存を切ることにしました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">class Foo
+  def sales_total(params, model = Sale)
+    range = DateRange.new(params[:starting], params[:ending]).range
+
+    model.total(within: range)
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby">class Bar
+  def weekly_sales_total(params, model = Sale)
+    range = DateRange.new(params[:starting]).week_range
+
+    model.total(within: range)
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby">class Baz
+  def expense_total(params, model = Expense)
+    range = DateRange.new(params[:starting], params[:ending]).range
+
+    model.total(within: range)
+  end
+end
+</code></pre>
+
+<aside class="notes">
+
+<p>モデルを注入することで。</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">class TotalableDouble
+  def self.total(within:)
+    47
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby">class FooTest &lt; MiniTest::Test
+  def test_sales_total
+    params = { starting: '2016-04-01', ending: '2016-04-07' }
+    assert_equal 47, Foo.new.sales_total(params, TotalableDouble)
+  end
+end
+</code></pre>
+
+<aside class="notes">
+
+<p>おかげで、テストは DB を見なくなり、そして超速くなった。</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">class Sale &lt; Persistance
+  def self.total(within:)
+    where(date: within).sum(:cost)
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby">class Expense &lt; Persistance
+  def self.total(within:)
+    where(date: within).sum(:cost)
+  end
+end
+</code></pre>
+
+<aside class="notes">
+
+<p>モデルに目を向けると、DRY じゃなくなっているのが分かります。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>Duplicate Code</h2>
+
+<h4>→ Pull Up Method</h4>
+
+<pre><code class="language-ruby">class Totalable
+  def total(within:)
+    where(date: within).sum(:cost)
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby">class Sale &lt; Persistance
+  extend Totalable
+end
+</code></pre>
+
+<pre><code class="language-ruby">class Expense &lt; Persistance
+  extend Totalable
+end
+</code></pre>
+
+<aside class="notes">
+
+<p>total メソッドをモジュールに Pull Up して共通化しました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">class Totalable
+  def total(within:, date_field: :date, on: :cost)
+    where(date_field =&gt; within).sum(on)
+  end
+end
+</code></pre>
+
+<aside class="notes">
+
+<p>おまけに、カラム名も注入するようにしました。カラム名に依存しないように。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>Speculative Generality</h2>
+
+<p><img class="emoji" alt=":scream:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f631.png"></p>
+
+<pre><code class="language-ruby">class Totalable
+  def total(within:, date_field: :date, on: :cost)
+    where(date_field =&gt; within).sum(on)
+  end
+end
+</code></pre>
+
+<aside class="notes">
+
+<p>でも今んとこはカラムをカスタマイズする必要性がまだない。Speculative Generality を増やしちゃったじゃないですか？！Sandi 先生もこれを認めました。規模のデカい Speculative Generality は絶対ダメだけど、小規模なら害はないだろうと。あと Dependency Injection は最高！だと。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/28908554-4f4da3d6-785f-11e7-827b-bbdbe2a7d79a.png" alt="Reek"></p>
+
+<aside class="notes">
+
+<p>最後に Sandi 先生は Reek gem を推奨しました。素敵なロゴでしょう？と。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h1>Get a Whiff of This</h1>
+<h2>日本語あらすじと解説</h2>
+
+<p><a href="https://rastamhadi.github.io/get_a_whiff_of_this">https://rastamhadi.github.io/get_a_whiff_of_this</a></p>
+
+<aside class="notes">
+
+<p>以上です。</p>
+
+</aside>
+
+</section>
+
+  </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+  (function() {
+  function extend( a, b ) {
+    for(var i in b) {
+      a[i] = b[i];
+    }
+  }
+  var baseOptions = {
+    transition: 'none',
+
+    dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true },
+      { src: 'plugin/notes/notes.js', async: true }
+    ]
+  };
+  var configOptions = {"controls":true,"progress":true,"history":true,"center":true}
+  var initializeOptions = {};
+  extend(initializeOptions, baseOptions);
+  extend(initializeOptions, configOptions);
+  Reveal.initialize(initializeOptions);
+})();
+
+</script>
+
+  </body>
+</html>
