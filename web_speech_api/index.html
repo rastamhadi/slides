@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta charset="utf-8">
+
+<title>意外と身近にあった！音声認識</title>
+
+<meta name="description" content="">
+<meta name="author" content="Rastam Hadi">
+<meta name="generator" content="reveal-ck 3.7.0">
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/blood.css" id="theme">
+
+<!-- Code syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<link rel="stylesheet" href="css/reveal-ck.css">
+
+
+<!-- Printing and PDF exports -->
+<script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+
+  </head>
+
+  <body>
+    <div class="reveal">
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div class="slides">
+    <section>
+
+<h3>意外と身近にあった！</h3>
+<h1>音声認識</h1>
+
+<p><a href="demo.html">デモはこちら</a></p>
+
+<aside class="notes">
+
+<p>お疲れ様です。ラスタムです。今のデモは…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><a href="https://youtu.be/e5dR05QGzXA">https://youtu.be/e5dR05QGzXA</a></p>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/27225966-941c7274-52d7-11e7-97de-31efc6f5930a.png" alt="Web Speech API for Voice Data Entry"></p>
+
+<aside class="notes">
+
+<p>… RailsConf のこのトークを元に作ったものです。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/27226130-74c60c7c-52d8-11e7-8a46-f28f1af5ab95.png" alt="Cameron Jacoby"></p>
+
+<aside class="notes">
+
+<p>プレゼンターの Cameron Jacoby さんは…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><a href="https://www.stitchfix.com/">https://www.stitchfix.com/</a></p>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/27226234-ed9afa22-52d8-11e7-9c95-562624670064.png" alt="Stitch Fix ホームページ"></p>
+
+<aside class="notes">
+
+<p>… Stitch Fix という会社のエンジニアです。Stitch Fix はスタイリング・サービスで、スタイル診断を元に選んだ服を家まで輸送して、その中から気に入ったものだけお客様が購入する、というビジネス・モデル。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/28104587-cd907660-6716-11e7-8f9a-0bf99ece5992.jpg" alt="寸法を測る工程"></p>
+
+<aside class="notes">
+
+<p>商品入荷作業の中には、寸法を測る工程があります。なお、お客様にぴったり合ったものを届けるために…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/28106280-48d8427e-671e-11e7-9d3a-a15b0cce2b30.png" alt="大量の寸法"></p>
+
+<aside class="notes">
+
+<p>…かなり細かいレベルまで測っているらしいです。この大量の寸法を記入するのがめんどくさい。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/28106749-0295c9ba-6720-11e7-8f58-5288883243f7.png" alt="腰痛"></p>
+
+<aside class="notes">
+
+<p>時間や労力がかかるだけではなく、ノートに記入するたびに腰を曲げている作業員の背中にまで負担がかかっていたそうです。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/27583801-a0421e86-5b70-11e7-841a-75b2844c6829.png" alt="W3C Web Speech API"></p>
+
+<aside class="notes">
+
+<p>この課題を Web Speech API で解決しました。ご覧のとおり、W3C 標準なので…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Chrome_Logo.jpg" alt="Google Chrome"></p>
+
+<aside class="notes">
+
+<p>…ブラウザー一本だけでも使えちゃいます！</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-coffeescript">initializeSpeechRecognition: -&gt;
+  @recognition = new webkitSpeechRecognition()
+  @recognition.lang = 'ja-JP'
+  @recognition.continuous = true
+  @recognition.interimResults = false
+  @recognition.start()
+
+  @recognition.onend = (e) =&gt;
+    @recognition.start()
+</code></pre>
+
+<pre><code class="language-coffeescript">recordVoiceResults: -&gt;
+  @recognition.onresult = (e) =&gt;
+    result = e.results[e.resultIndex]
+    transcript = result[0].transcript.trim()
+</code></pre>
+
+<pre><code class="language-coffeescript">if typeof(webkitSpeechRecognition) == typeof(Function)
+  @initializeSpeechRecognition()
+</code></pre>
+
+<aside class="notes">
+
+<p>Cameron さんのスライドのソースをそのままコピペして弄ってみたら、さっきのデモが出来上がりました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-javascript">var match = instruction.match(/^(.+)は(.+)です$/);
+if (match) {
+  switch (match[1]) {
+    case "名前":
+      // 名前を設定
+      break;
+    case "都道府県":
+      // 都道府県を設定
+      break;
+    case "生年月日":
+      // 生年月日を設定
+  }
+} else if (instruction == "スライドに行ってください") {
+  // スライドに遷移
+}
+</code></pre>
+
+<aside class="notes">
+
+<p>カスタム挙動は、正規表現まみれの簡易ルーターで実装しました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/27587447-6300b8de-5b7f-11e7-9b9e-fbb79de2855e.png" alt="Web Speech API Demo"></p>
+
+<aside class="notes">
+
+<p>あと Google 先生が設けたデモも参考になりました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><a href="https://www.google.com/intl/en/chrome/demos/speech.html">https://www.google.com/intl/en/chrome/demos/speech.html</a></p>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/27584058-93cd0e3a-5b71-11e7-9ae4-f3e05d532564.png" alt="Web Speech API Demo"></p>
+
+<aside class="notes">
+
+<p>デモを見た限りでは、英語はもちろん…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><a href="https://www.google.com/intl/en/chrome/demos/speech.html">https://www.google.com/intl/en/chrome/demos/speech.html</a></p>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/27584211-1a968f9a-5b72-11e7-8149-1ec5572e57f2.png" alt="多言語対応"></p>
+
+<aside class="notes">
+
+<p>…日本語などの多言語対応もけっこう充実しているようです。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://cameronjacoby.github.io/talks/2017/web_speech_api_rails_conf/images/24_browser_support.png" alt="ブラウザー対応"></p>
+
+<aside class="notes">
+
+<p>懸念点としては、対応しているブラウザーは Chrome だけです。あと数時間使い続けると…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img class="emoji" alt=":skull:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f480.png"> <img class="emoji" alt=":skull:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f480.png"> <img class="emoji" alt=":skull:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f480.png"> <img class="emoji" alt=":skull:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f480.png"> <img class="emoji" alt=":skull:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f480.png"> <img class="emoji" alt=":skull:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f480.png"> <img class="emoji" alt=":skull:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f480.png"></p>
+
+<h1>突然死</h1>
+
+<p><img class="emoji" alt=":skull:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f480.png"> <img class="emoji" alt=":skull:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f480.png"> <img class="emoji" alt=":skull:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f480.png"> <img class="emoji" alt=":skull:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f480.png"> <img class="emoji" alt=":skull:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f480.png"> <img class="emoji" alt=":skull:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f480.png"> <img class="emoji" alt=":skull:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f480.png"></p>
+
+<aside class="notes">
+
+<p>…途中でいきなり反応しなくなることもあるらしい。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://cameronjacoby.github.io/talks/2017/web_speech_api_rails_conf/images/30_reliability.png" alt="This is an experimental technology"></p>
+
+<aside class="notes">
+
+<p>まだ不安定なので責任は負いかねます。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h3>意外と身近にあった！</h3>
+<h1>音声認識</h1>
+
+<p><a href="demo.html">デモはこちら</a></p>
+
+<aside class="notes">
+
+<p>以上です。デモでご自由に遊んでみてください。</p>
+
+</aside>
+
+</section>
+
+  </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+  (function() {
+  function extend( a, b ) {
+    for(var i in b) {
+      a[i] = b[i];
+    }
+  }
+  var baseOptions = {
+    transition: 'none',
+
+    dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true },
+      { src: 'plugin/notes/notes.js', async: true }
+    ]
+  };
+  var configOptions = {"controls":true,"progress":true,"history":true,"center":true}
+  var initializeOptions = {};
+  extend(initializeOptions, baseOptions);
+  extend(initializeOptions, configOptions);
+  Reveal.initialize(initializeOptions);
+})();
+
+</script>
+
+  </body>
+</html>

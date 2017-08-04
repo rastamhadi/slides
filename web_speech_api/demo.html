@@ -1,0 +1,187 @@
+<html>
+<head>
+	<title>意外と身近にあった！音声認識</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+		body {
+			font-size: 1.5em;
+			font-family: sans-serif;
+		}
+
+		.recognition_log {
+			padding: 1em;
+			background-color: gainsboro;
+			font-family: monospace;
+		}
+
+		form {
+			padding: 1em;
+		}
+
+		.form_field {
+			padding: 0.5em;
+		}
+
+		input, select {
+			font-size: 1em;
+		}
+	</style>
+</head>
+<body>
+	バッファー
+	<div id="interim_log" class="recognition_log"></div>
+	ファイナルアンサー
+	<div id="final_log" class="recognition_log"></div>
+	<form id="demo_form" action="index.html">
+		<div class="form_field">
+			<label for="name">名前</label>
+			<input type="text" id="name" name="name" />
+		</div>
+		<div class="form_field">
+			<label for="prefecture">都道府県</label>
+			<select id="prefecture" name="prefecture">
+				<option value="1">北海道</option>
+				<option value="2">青森県</option>
+				<option value="3">岩手県</option>
+				<option value="4">宮城県</option>
+				<option value="5">秋田県</option>
+				<option value="6">山形県</option>
+				<option value="7">福島県</option>
+				<option value="8">茨城県</option>
+				<option value="9">栃木県</option>
+				<option value="10">群馬県</option>
+				<option value="11">埼玉県</option>
+				<option value="12">千葉県</option>
+				<option value="13">東京都</option>
+				<option value="14">神奈川県</option>
+				<option value="15">新潟県</option>
+				<option value="16">富山県</option>
+				<option value="17">石川県</option>
+				<option value="18">福井県</option>
+				<option value="19">山梨県</option>
+				<option value="20">長野県</option>
+				<option value="21">岐阜県</option>
+				<option value="22">静岡県</option>
+				<option value="23">愛知県</option>
+				<option value="24">三重県</option>
+				<option value="25">滋賀県</option>
+				<option value="26">京都府</option>
+				<option value="27">大阪府</option>
+				<option value="28">兵庫県</option>
+				<option value="29">奈良県</option>
+				<option value="30">和歌山県</option>
+				<option value="31">鳥取県</option>
+				<option value="32">島根県</option>
+				<option value="33">岡山県</option>
+				<option value="34">広島県</option>
+				<option value="35">山口県</option>
+				<option value="36">徳島県</option>
+				<option value="37">香川県</option>
+				<option value="38">愛媛県</option>
+				<option value="39">高知県</option>
+				<option value="40">福岡県</option>
+				<option value="41">佐賀県</option>
+				<option value="42">長崎県</option>
+				<option value="43">熊本県</option>
+				<option value="44">大分県</option>
+				<option value="45">宮崎県</option>
+				<option value="46">鹿児島県</option>
+				<option value="47">沖縄県</option>
+			</select>
+		</div>
+		<div class="form_field">
+			<label for="date_of_birth">生年月日</label>
+			<input type="date" id="date_of_birth" name="date_of_birth" />
+		</div>
+	</form>
+	<script type="text/javascript">
+		var interimLog = document.getElementById("interim_log");
+		var finalLog = document.getElementById("final_log");
+		var demoForm = document.getElementById("demo_form");
+		var nameField = document.getElementById("name");
+		var prefectureField = document.getElementById("prefecture");
+		var dateOfBirthField = document.getElementById("date_of_birth");
+
+		var router = {
+			route: function(instruction) {
+				var match = instruction.match(/^(.+)は(.+)です$/);
+
+				if (match) {
+					switch (match[1]) {
+						case "名前":
+							nameField.value = match[2];
+							break;
+						case "都道府県":
+							var i, len, option;
+							var options = prefectureField.options;
+							for (i = 0, len = options.length; i < len; i++) {
+								option = options[i];
+								if (option.text === match[2]) {
+									prefectureField.selectedIndex = option.index;
+									break;
+								}
+							}
+							break;
+						case "生年月日":
+							var dobMatch = match[2].match(/^([0-9]{4})年(1?[0-9])月([1-3]?[0-9])日$/);
+							if (dobMatch) {
+								var dateOfBirth = new Date();
+								dateOfBirth.setFullYear(dobMatch[1]);
+								dateOfBirth.setMonth(dobMatch[2] - 1);
+								dateOfBirth.setDate(dobMatch[3]);
+								console.log(dateOfBirth.toISOString());
+								dateOfBirthField.value = dateOfBirth.toISOString().split("T")[0];
+							}
+					}
+				} else if (instruction == "スライドに行ってください") {
+					demoForm.submit();
+				}
+			}
+		};
+
+		var webSpeechRecognizer = {
+			initializeSpeechRecognition: function() {
+				this.recognition = new webkitSpeechRecognition();
+				this.recognition.lang = 'ja-JP';
+				this.recognition.continuous = true;
+				this.recognition.interimResults = true;
+
+				this.recognition.onend = (function(_this) {
+					return function(e) {
+						return _this.recognition.start();
+					};
+				})(this);
+
+				this.recognition.onresult = (function(_this) {
+					return function(e) {
+						var i, j, len, ref, result;
+						interimLog.innerHTML = "";
+						finalLog.innerHTML = "";
+						ref = e.results;
+						for (i = 0, len = ref.length; i < len; i++) {
+							result = ref[i];
+							if (result.isFinal) {
+								finalLog.innerHTML += result[0].transcript + '<br>';
+								router.route(result[0].transcript);
+							} else {
+								for (j = 0, len = result.length; j < len; j++) {
+									interimLog.innerHTML += result[j].transcript + '<br>';
+								}
+							}
+						}
+					};
+				})(this);
+
+				this.recognition.start();
+			}
+		};
+
+		if (typeof webkitSpeechRecognition === typeof Function) {
+			webSpeechRecognizer.initializeSpeechRecognition();
+		} else {
+			interimLog.innerHTML = "Chrome 以外は非対応 m( _ _;)m";
+			finalLog.innerHTML = "Chrome 以外は非対応 m( _ _;)m";
+		}
+	</script>
+</body>
+</html>
