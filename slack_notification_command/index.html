@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta charset="utf-8">
+
+<title>美しい Slack 通知を飛ばす美しいコマンド</title>
+
+<meta name="description" content="">
+<meta name="author" content="Rastam Hadi">
+<meta name="generator" content="reveal-ck 3.8.0">
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/blood.css" id="theme">
+
+<!-- Code syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<link rel="stylesheet" href="css/reveal-ck.css">
+
+
+<!-- Printing and PDF exports -->
+<script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+
+  </head>
+
+  <body>
+    <div class="reveal">
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div class="slides">
+    <section>
+
+<h1>美しい</h1>
+<h2>Slack 通知を飛ばす</h2>
+<h1>美しいコマンド</h1>
+
+<aside class="notes">
+
+<p>お疲れ様です。ラスタムです。Jenkins ジョブから Slack 通知を飛ばしたかった話です。よくありますね。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>背景</h2>
+
+<p>Jenkins の Slack Plugin<br>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Slack+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/Slack+Plugin</a></p>
+
+<p>　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>Jenkins には Slack Plugin がちゃんとあります。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>背景</h2>
+
+<p>Jenkins の Slack Plugin<br>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Slack+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/Slack+Plugin</a></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1012322/25578296/2bdbfa66-2ea8-11e7-84df-2efd78fe98f2.png" alt="image"></p>
+
+<p>　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>が、こういう定型文ぐらいしか送れません。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>背景</h2>
+
+<p>Jenkins の Slack Plugin<br>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Slack+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/Slack+Plugin</a></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1012322/25578296/2bdbfa66-2ea8-11e7-84df-2efd78fe98f2.png" alt="image"></p>
+
+<p><img class="emoji" alt=":confused:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f615.png"></p>
+
+<p>　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>なんか物足りない。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>背景</h2>
+
+<p>Jenkins の Slack Plugin<br>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Slack+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/Slack+Plugin</a></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1012322/25578296/2bdbfa66-2ea8-11e7-84df-2efd78fe98f2.png" alt="image"></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1012322/23511612/08a1202a-ffa1-11e6-96f0-a0eec49d411d.png" alt="image"></p>
+
+<p>　</p>
+
+<aside class="notes">
+
+<p>いや、嘘をつきました。定型文だけじゃなくて、カスタムメッセージも一応設定できます。が、対応しているのはテキストだけです。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>背景</h2>
+
+<p>Slack の <code>attachment</code> 使いたい</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1012322/24500969/98e7c80e-1582-11e7-8564-2d2d3119a8ec.png" alt="image"></p>
+
+<p>　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>つまり Slack の attachment とかフル活用できませんし、美しくフォーマットできません。見た目重視なラスタムはガッカリ。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>背景</h2>
+
+<p>Slack の <code>attachment</code> 使いたい</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1012322/24502511/0e9a2d16-1589-11e7-986c-ef9c6dc565d5.png" alt="image"></p>
+
+<p>　<br>
+　</p>
+
+<aside class="notes">
+
+<p>ちなみに attachment というのはこの部分です。意外と知られていないようなので、紹介しておきます。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1012322/24503290/663370f2-158c-11e7-8878-1b0c5f914595.png" alt="image"></p>
+
+<aside class="notes">
+
+<p>美しい attachment を組み立てるには、Slack 公式サイトの Message Builder ツールがオススメです。完璧な通知ができるまで、JSON の微調整を何度も何度も繰り返せますから。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>コマンド</h2>
+
+<pre><code class="language-bash">cat &lt;&lt;-JSON | curl -X POST --data-urlencode payload@- https://hooks.slack.com/services/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
+{
+    "text": "\`$SERVER\` デプロイを中止しました。",
+    "attachments": [
+        {
+            "color": "danger",
+            "text": "AS バイナリーが gerrit の最新コミットと一致していない。",
+            "fields": [
+                {
+                    "title": "actionserver.elf のコミット",
+                    "value": "$bin_commit"
+                }
+            ]
+        }
+    ]
+}
+JSON
+</code></pre>
+
+<p>　<br>
+　</p>
+
+<aside class="notes">
+
+<p>最高の JSON を手に入れたら、コマンドで Slack に送ります。このワンライナーを組んでいる間に、へぇーってなったところがいくつかありましたので、解説していきます。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>JSON</h2>
+
+<pre><code class="language-json">
+{
+    "text": "`$SERVER` デプロイを中止しました。",
+    "attachments": [
+        {
+            "color": "danger",
+            "text": "AS バイナリーが gerrit の最新コミットと一致していない。",
+            "fields": [
+                {
+                    "title": "actionserver.elf のコミット",
+                    "value": "$bin_commit"
+                }
+            ]
+        }
+    ]
+}
+
+</code></pre>
+
+<p>　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>まず Message Builder で組んできた JSON をコマンドにぶっ込みます。せっかくの美しいインデントとかは崩したくないから…</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>HEREDOC</h2>
+
+<pre><code class="language-bash">&lt;&lt;-JSON
+{
+    "text": "\`$SERVER\` デプロイを中止しました。",
+    "attachments": [
+        {
+            "color": "danger",
+            "text": "AS バイナリーが gerrit の最新コミットと一致していない。",
+            "fields": [
+                {
+                    "title": "actionserver.elf のコミット",
+                    "value": "$bin_commit"
+                }
+            ]
+        }
+    ]
+}
+JSON
+</code></pre>
+
+<p>　<br>
+　</p>
+
+<aside class="notes">
+
+<p>… HEREDOC にします。次は curl コマンドにパイプできるように…</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>HEREDOC</h2>
+
+<pre><code class="language-bash">cat &lt;&lt;-JSON
+{
+    "text": "\`$SERVER\` デプロイを中止しました。",
+    "attachments": [
+        {
+            "color": "danger",
+            "text": "AS バイナリーが gerrit の最新コミットと一致していない。",
+            "fields": [
+                {
+                    "title": "actionserver.elf のコミット",
+                    "value": "$bin_commit"
+                }
+            ]
+        }
+    ]
+}
+JSON
+</code></pre>
+
+<p>　<br>
+　</p>
+
+<aside class="notes">
+
+<p>… cat します。<br>
+あれっ。ちょっと待って。echo じゃなくて …</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>HEREDOC</h2>
+
+<pre><code class="language-bash">cat &lt;&lt;-JSON
+{
+    "text": "\`$SERVER\` デプロイを中止しました。",
+    "attachments": [
+        {
+            "color": "danger",
+            "text": "AS バイナリーが gerrit の最新コミットと一致していない。",
+            "fields": [
+                {
+                    "title": "actionserver.elf のコミット",
+                    "value": "$bin_commit"
+                }
+            ]
+        }
+    ]
+}
+JSON
+</code></pre>
+
+<p><img class="emoji" alt=":cat:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f431.png"> <img class="emoji" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png"></p>
+
+<p>　</p>
+
+<aside class="notes">
+
+<p>… cat??<br>
+実は、シェルの HEREDOC は Ruby の HEREDOC と違って、文字列ではなく、標準入力用のダミーファイルを作っちゃっています。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>HEREDOC</h2>
+
+<pre><code class="language-bash">$ echo &lt;&lt;-HEREDOC
+&gt; hoge
+&gt; fuga
+&gt; HEREDOC
+                      # シーーーン 💧
+</code></pre>
+
+<pre><code class="language-bash">$ cat &lt;&lt;-HEREDOC
+&gt; hoge
+&gt; fuga
+&gt; HEREDOC
+hoge
+fuga
+</code></pre>
+
+<p>　<br>
+　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>実際 echo してみても何も出てきません。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>curl</h2>
+
+<pre><code class="language-bash">curl -X POST --data-urlencode payload@- https://hooks.slack.com/...
+</code></pre>
+
+<p>　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>次は curl コマンドを見ます。一見普通に見えますが、よく見たら…</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>curl</h2>
+
+<pre><code class="language-bash">curl -X POST --data-urlencode payload@- https://hooks.slack.com/...
+</code></pre>
+
+<p><img class="emoji" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png"> <code>payload@-</code> <img class="emoji" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png"></p>
+
+<p>　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>このおまじないが謎い。分解してみると…</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>curl</h2>
+
+<pre><code class="language-bash">curl -X POST --data-urlencode payload@- https://hooks.slack.com/...
+</code></pre>
+
+<p><img class="emoji" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png"> <code>payload@-</code> <img class="emoji" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png"></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>要素</th>
+      <th>効果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>payload</code></td>
+      <td>
+<code>payload=</code> 属性名定義</td>
+    </tr>
+    <tr>
+      <td><code>@</code></td>
+      <td>値をファイルから</td>
+    </tr>
+    <tr>
+      <td><code>-</code></td>
+      <td>値を標準入力（パイプ）から</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>…こういう効果があります。payload という属性を定義して、その値をパイプから読み込んでいます。つまり…</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>curl</h2>
+
+<pre><code class="language-bash">curl -X POST --data-urlencode payload@- https://hooks.slack.com/...
+</code></pre>
+
+<p><img class="emoji" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png"> <code>payload@-</code> <img class="emoji" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png"></p>
+
+<pre><code class="language-json">payload={
+    "text": "`$SERVER` デプロイを中止しました。",
+    "attachments": [
+        {
+            "color": "danger",
+            "text": "AS バイナリーが gerrit の最新コミットと一致していない。",
+            "fields": [
+                {
+                    "title": "actionserver.elf のコミット",
+                    "value": "$bin_commit"
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+
+<p>　</p>
+
+<aside class="notes">
+
+<p>…こういうデータを POST します。その上に…</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>curl</h2>
+
+<pre><code class="language-bash">curl -X POST --data-urlencode payload@- https://hooks.slack.com/...
+</code></pre>
+
+<p><img class="emoji" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png"> <code>--data-urlencode</code> <img class="emoji" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png"></p>
+
+<pre><code class="language-json">payload={
+    "text": "`$SERVER` デプロイを中止しました。",
+    "attachments": [
+        {
+            "color": "danger",
+            "text": "AS バイナリーが gerrit の最新コミットと一致していない。",
+            "fields": [
+                {
+                    "title": "actionserver.elf のコミット",
+                    "value": "$bin_commit"
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+
+<p>　<br>
+　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>… –data-urlencode オプションで…</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>curl</h2>
+
+<pre><code class="language-bash">curl -X POST --data-urlencode payload@- https://hooks.slack.com/...
+</code></pre>
+
+<p><img class="emoji" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png"> <code>--data-urlencode</code> <img class="emoji" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png"></p>
+
+<pre><code class="language-url">payload=%7B%22text%22%3A%20%22%60%24SERVER%60%20%83f%83v%83%8D%83C
+%82%F0%92%86%8E~%82%B5%82%DC%82%B5%82%BD%81B%22%2C%22attachments%22
+%3A%20%5B%7B%22color%22%3A%20%22danger%22%2C%22text%22%3A%20%22AS
+%20%83o%83C%83i%83%8A%81%5B%82%AA%20gerrit%20%82%CC%8D%C5%90V%83R
+%83~%83b%83g%82%C6%88%EA%92v%82%B5%82%C4%82%A2%82%C8%82%A2%81B%22
+%2C%22fields%22%3A%20%5B%7B%22title%22%3A%20%22actionserver.elf%20
+%82%CC%83R%83~%83b%83g%22%2C%22value%22%3A%20%22%24bin_commit%22%7D
+%5D%7D%5D%7D
+</code></pre>
+
+<p>　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>… URL エンコードします。<br>
+以上です。ご静聴ありがとうございます。</p>
+
+</aside>
+
+</section>
+
+  </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+
+<script>
+  (function() {
+  function extend( a, b ) {
+    for(var i in b) {
+      a[i] = b[i];
+    }
+  }
+  var baseOptions = {
+    transition: 'none',
+
+    dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true },
+      { src: 'plugin/notes/notes.js', async: true }
+    ]
+  };
+
+  
+
+  var configOptions = {"controls":true,"progress":true,"history":true,"center":true}
+  var initializeOptions = {};
+  extend(initializeOptions, baseOptions);
+  extend(initializeOptions, configOptions);
+  Reveal.initialize(initializeOptions);
+})();
+
+</script>
+
+  </body>
+</html>
