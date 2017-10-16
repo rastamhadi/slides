@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta charset="utf-8">
+
+<title>ラスタム秘伝の LT スライド大作戦</title>
+
+<meta name="description" content="">
+<meta name="author" content="Rastam Hadi">
+<meta name="generator" content="reveal-ck 3.8.0">
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/blood.css" id="theme">
+
+<!-- Code syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+
+<link rel="stylesheet" href="css/reveal-ck.css">
+
+
+<!-- Printing and PDF exports -->
+<script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+
+  </head>
+
+  <body>
+    <div class="reveal">
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div class="slides">
+    <section>
+
+<h2>ラスタム秘伝の</h2>
+<h1>LT スライド</h1>
+<h1>大作戦</h1>
+
+<aside class="notes">
+
+<p>お疲れ様です。ラスタムです。基盤チームに移って、毎月 LT をやるようになりました。その LT 事前準備の秘伝のタレを今日ここで公開します！</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>reveal-js</h2>
+
+<p><a href="http://lab.hakim.se/reveal-js/">http://lab.hakim.se/reveal-js/</a></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1012322/25890204/aea3a3e4-35a7-11e7-82dd-2cadc4b22c60.png" alt="image"></p>
+
+<p>　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>まずスライドを作るツールとしては reveal-js を愛用しています。見栄えもいいんだし、完全にブラウザーベースで、WEB エンジニアの僕にとっては扱いやすいです。なお Speaker Notes 機能まで付いていますので、ナレーションは何も考えずに、事前に書いたものを棒読みできます。短所をひとつ挙げるとしたら、生 HTML のスライドはやっぱりボイラープレートが多いです。そこで…</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>reveal-ck</h2>
+
+<p><a href="http://jedcn.github.io/reveal-ck/">http://jedcn.github.io/reveal-ck/</a></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1012322/25890174/96fbfe12-35a7-11e7-9e60-03342b47b2b0.png" alt="image"></p>
+
+<aside class="notes">
+
+<p>… reveal-ck という gem が登場します。Github Flavored Markdown で書いたスライドを元に、reveal-js 用 HTML を生成してくれます。しかも絵文字にまで対応しています。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>ホスティング</h2>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1012322/25893856/87ecd704-35b4-11e7-9537-d1b8bf565d63.png" alt=""></p>
+
+<aside class="notes">
+
+<p>次の課題は、スライドを会議室のディスプレイと Google Hangouts に届けること。ラスタムはノートパソコンを持ってないし、持っていたとしても大量の HTML と Javascript と CSS ファイルをコピペするのが嫌です。そこで自分のデスクトップから公開することにしました。この仕組みを立ち上げるには、まずインストールが…</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>ホスティング手順</h2>
+
+<p>　<br>
+　</p>
+
+<p><img class="emoji" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"> <img class="emoji" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"> <img class="emoji" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"> <img class="emoji" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"> <img class="emoji" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"> <img class="emoji" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"> <img class="emoji" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"></p>
+
+<p>OSX はインストール不要！</p>
+
+<p><img class="emoji" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"> <img class="emoji" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"> <img class="emoji" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"> <img class="emoji" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"> <img class="emoji" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"> <img class="emoji" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"> <img class="emoji" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"></p>
+
+<p>　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>…一切ないです！OSX にはデフォルトで Apache が同梱されているから！</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>ホスティング手順</h2>
+
+<pre><code class="language-shell">$ mkdir ~/Sites
+</code></pre>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1012322/25895640/b168440e-35bb-11e7-8f63-a50a115f6f2e.png" alt="5e221776-35ba-11e7-937b-252207298f30"></p>
+
+<aside class="notes">
+
+<p>次は Sites フォルダーを作ります。OSX はデフォルトでこのフォルダーを WEBROOT として認識しますので、Finder で開いてみれば、Safari の羅針盤アイコンが付いているのが見受けられます。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>ホスティング手順</h2>
+
+<pre><code class="language-shell">$ ln -s /path/to/reveal.js/slides ~/Sites/hoge
+</code></pre>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1012322/25895881/be6b8ca0-35bc-11e7-98d9-111881f5d801.png" alt="screen shot 2017-05-10 at 20 09 22"></p>
+
+<aside class="notes">
+
+<p>Sites フォルダーの中から、公開したいフォルダーへのシンボリックリンクを張ります。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>ホスティング手順</h2>
+
+<p>　</p>
+
+<pre><code class="language-shell">$ vi /etc/apache2/users/$(whoami).conf
+</code></pre>
+
+<pre><code class="language-xml">&lt;Directory "/Users/あなたのユーザ名/Sites/"&gt;
+  AllowOverride All
+  Options Indexes MultiViews FollowSymLinks
+  Require all granted
+&lt;/Directory&gt;
+</code></pre>
+
+<p>　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>Apache にシンボリックリンクを認識させるように、ユーザ設定をこうします。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>ホスティング手順</h2>
+
+<p>　</p>
+
+<pre><code class="language-shell">$ vi /etc/apache2/extra/httpd-userdir.conf
+</code></pre>
+
+<pre><code>Include /private/etc/apache2/users/*.conf
+</code></pre>
+
+<p>　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>ユーザ設定の Include 文がコメントアウトされている場合は、アンコメントする必要があります。有効にするために。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>ホスティング手順</h2>
+
+<p>　</p>
+
+<pre><code class="language-shell">$ vi /etc/apache2/httpd.conf
+</code></pre>
+
+<pre><code>LoadModule authz_host_module libexec/apache2/mod_authz_host.so
+LoadModule authz_core_module libexec/apache2/mod_authz_core.so
+LoadModule userdir_module libexec/apache2/mod_userdir.so
+LoadModule vhost_alias_module libexec/apache2/mod_vhost_alias.so
+Include /private/etc/apache2/extra/httpd-userdir.conf
+Include /private/etc/apache2/extra/httpd-vhosts.conf
+</code></pre>
+
+<p>　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>あと httpd.conf のこの Directive もアンコメントします。何の Directive なのかは、聞かないでください。Google 先生の指示どおりに書いただけですから。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>ホスティング手順</h2>
+
+<p>　</p>
+
+<pre><code class="language-shell">$ sudo apachectl restart
+</code></pre>
+
+<p>　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>最後に Apache を再起動して、新しい設定を読み込ませます。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>ホスティング手順</h2>
+
+<pre><code>http://あなたのIP/~あなたのユーザ名/シンボリックリンク
+</code></pre>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1012322/25896861/ca67b39a-35c0-11e7-8140-d51e80309caf.png" alt="screen shot 2017-05-10 at 20 38 10"></p>
+
+<aside class="notes">
+
+<p>うまくいった場合は、IP で見れるようになりました。他の人のマシンからでも。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img class="emoji" alt=":checkered_flag:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f3c1.png"></p>
+
+<aside class="notes">
+
+<p>終わり。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p>How to Set up Apache in macOS Sierra 10.12<br>
+<a href="https://medium.com/@JohnFoderaro/how-to-set-up-apache-in-macos-sierra-10-12-bca5a5dfffba#.49gn0gs9w">https://medium.com/@JohnFoderaro/how-to-set-up-apache-in-macos-sierra-10-12-bca5a5dfffba#.49gn0gs9w</a></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1012322/25894813/598e3b6a-35b8-11e7-9e87-5c5d97420811.png" alt="image"></p>
+
+<aside class="notes">
+
+<p>今の手順は、この記事を参考にしたものです。</p>
+
+</aside>
+
+</section>
+
+  </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+
+<script>
+  (function() {
+  function extend( a, b ) {
+    for(var i in b) {
+      a[i] = b[i];
+    }
+  }
+  var baseOptions = {
+    transition: 'none',
+
+    dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true },
+      { src: 'plugin/notes/notes.js', async: true }
+    ]
+  };
+
+  
+
+  var configOptions = {"controls":true,"progress":true,"history":true,"center":true}
+  var initializeOptions = {};
+  extend(initializeOptions, baseOptions);
+  extend(initializeOptions, configOptions);
+  Reveal.initialize(initializeOptions);
+})();
+
+</script>
+
+  </body>
+</html>
