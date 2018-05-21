@@ -1,0 +1,264 @@
+<section>
+
+<h1>グラフ DB で</h1>
+<h2>フレンド機能実装</h2>
+
+<aside class="notes">
+
+<p>お疲れ様です。ラスタムです。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/38247487-7afe6dd6-3780-11e8-9416-a81bd718f7cb.png" alt="User.has_and_belongs_to_many :friendships"></p>
+
+<aside class="notes">
+
+<p>前のプロジェクトで、FB のようなフレンド機能を作ることになった。普通に作ろうとしたら、こういうモデリングになります。friendships テーブルという JOIN テーブルで、user_id カラムにはフレンド申請を出したユーザが入り、相手が friend_id カラムに入ります。ここまでは大したことないですが…</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-sql">(
+
+  SELECT u.*
+  FROM friendships f JOIN users u
+  ON f.friend_id = u.id
+  WHERE f.user_id = 123
+
+) UNION (
+
+  SELECT u.*
+  FROM friendships f JOIN users u
+  ON f.user_id = u.id
+  WHERE f.friend_id = 123
+
+)
+</code></pre>
+
+<aside class="notes">
+
+<p>…いざユーザのフレンドを取得しようとしたら、こんな酷いクエリになってしまいます。自分から申請したフレンドだけではなく、向こうから申請された Friendship も考慮しなきゃいけないです。</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">class User &lt; ActiveRecord::Base
+  has_many :friendships
+  has_many :inverse_friendships, class_name: "Friendship",
+                                 foreign_key: :friend_id
+
+  def friends
+    friend_ids = friendships.pluck(:friend_id) +
+                 inverse_friendships.pluck(:user_id)
+
+    User.where(id: friend_ids)
+  end
+end
+</code></pre>
+
+<aside class="notes">
+
+<p>ActiveRecord はこうなります。inverse_friendships という素晴らしいネーミングが生まれる。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p>The (Non-Perfect) Mathematics of Trust</p>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/34774720-c24053c6-f653-11e7-91ca-5feb2d6516d9.png" alt="カリーニングラードのオイラー路"></p>
+
+<aside class="notes">
+
+<p>そして今年頭にこのトークの日本語サマリーを LT 大会で発表しました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h4>AirBnB 信頼制度</h4>
+<h3>SNS のソーシャルグラフ</h3>
+<h4>Google の PageRank アルゴリズム</h4>
+
+<aside class="notes">
+
+<p>その中にはグラフ理論の活用例として、SNS のソーシャルグラフを挙げていました。SNS が RDBMS ではなく、グラフ DB を選んでるのはきっと具体的な理由はあるでしょう。その理由が気になって、とりあえず実装してみることにしました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/38243829-ba182cbc-3773-11e8-8eae-3f4aef41800b.png" alt="Neo4j"></p>
+
+<aside class="notes">
+
+<p>まず市場調査から始めました。グラフ DB の中で Neo4j が圧倒的に主流になっていることが分かりました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p>Cypher</p>
+
+<pre><code class="language-cypher">MATCH (you {name:"You"})
+MATCH (expert)-[:WORKED_WITH]-&gt;(db:Database {name:"Neo4j"})
+MATCH path = shortestPath( (you)-[:FRIEND*..5]-(expert) )
+RETURN db, expert, path
+</code></pre>
+
+<p>　<br>
+　<br>
+　<br>
+　</p>
+
+<aside class="notes">
+
+<p>SQL に当たるクエリ言語は Cypher といいます。シンタックスとかに関しては、あえて触れません。ラスタムもまだ覚えようとしてないから。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/38245396-e0a341dc-3778-11e8-8945-896e140034ea.png" alt="neo4j gem"></p>
+
+<aside class="notes">
+
+<p>gem ももちろんあります。ActiveRecord らしきインターフェース完備。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h1>デモ</h1>
+
+<p><a href="https://github.com/rastamhadi/tomodachi">https://github.com/rastamhadi/tomodachi</a></p>
+
+<aside class="notes">
+
+<p>では、デモ見せます。</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">has_many :friendships
+has_many :inverse_friendships, class_name: "Friendship",
+                               foreign_key: :friend_id
+
+
+</code></pre>
+
+<aside class="notes">
+
+<p>果たしてさっきの辛い ActiveRecord はどう変わるでしょうか？まずアソシエーションは…</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-ruby"># has_many :friendships
+# has_many :inverse_friendships, class_name: "Friendship",
+#                                foreign_key: :friend_id
+
+has_many :both, :friends, type: :friend, model_class: 'User'
+</code></pre>
+
+<aside class="notes">
+
+<p>… 1 行になります。この both で双方向関係になります。</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">def friends
+  friend_ids = friendships.pluck(:friend_id) +
+               inverse_friendships.pluck(:user_id)
+
+  User.where(id: friend_ids)
+end
+
+
+</code></pre>
+
+<aside class="notes">
+
+<p>そしてフレンド取得は…</p>
+
+</aside>
+
+</section>
+<section>
+
+<pre><code class="language-ruby"># def friends
+#   friend_ids = friendships.pluck(:friend_id) +
+#                inverse_friendships.pluck(:user_id)
+# 
+#   User.where(id: friend_ids)
+# end
+
+@user.friends
+</code></pre>
+
+<aside class="notes">
+
+<p>…メソッドすら要らなくなる。アソシエーションだけで取得できちゃう。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h1>結論</h1>
+
+<aside class="notes">
+
+<p>結論としては…</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>JOIN 辛 <img class="emoji" alt=":tangerine:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f34a.png">
+</h2>
+
+<p><img class="emoji" alt=":arrow_down:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b07.png"></p>
+
+<h2>グラフ DB</h2>
+
+<aside class="notes">
+
+<p>…JOIN が辛くなったときが、グラフ DB の出番のではないかと。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h1>グラフ DB で</h1>
+<h2>フレンド機能実装</h2>
+
+<aside class="notes">
+
+<p>以上です。</p>
+
+</aside>
+
+</section>

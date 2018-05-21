@@ -7,3 +7,4 @@
 * [美しい Slack 通知を飛ばす美しいコマンド](https://rastamhadi.github.io/slides/slack_notification_command)
 * [ラスタム秘伝の LT スライド大作戦](https://rastamhadi.github.io/slides/lt_slides_server)
 * [The (Non-Perfect) Mathematics of Trust: 日本語サマリー](https://rastamhadi.github.io/slides/the_maths_of_trust)
+* [グラフ DB でフレンド機能実装](https://rastamhadi.github.io/slides/making_friends_with_graphs)
