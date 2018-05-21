@@ -1,0 +1,288 @@
+<section>
+
+<h2>The (Non-Perfect) Mathematics of Trust</h2>
+
+<h3>日本語サマリー</h3>
+
+<aside class="notes">
+
+<p>お疲れ様です。ラスタムです。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/33558815-39ae15e2-d94e-11e7-86ac-f59a4ae81054.png" alt="Rocky Mountain Ruby 2017"></p>
+
+<aside class="notes">
+
+<p>今日の LT ネタは去年の Rocky Mountain Ruby のトークです。分かりやすくてストーリーっぽいプレゼンテーションスタイルが気に入ったので、日本語のサマリーを用意することにしました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/33558721-fde3f626-d94d-11e7-82f7-dfd961607c7c.png" alt="コロラド州デンバー市"></p>
+
+<aside class="notes">
+
+<p>Rocky Mountain の開催地はコロラド州デンバー市で、</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/33558876-628f3eaa-d94e-11e7-8a35-9f4f3b973c91.png" alt="Vaidehi Joshi"></p>
+
+<aside class="notes">
+
+<p>プレゼンターの Vaidehi Joshi さんは…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/33558532-75b33848-d94d-11e7-9c2a-9ea089c72e6e.png" alt="Tilde"></p>
+
+<aside class="notes">
+
+<p>… Tilde という会社のエンジニアで、Tilde の最も有名な商品は…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/33558434-283948fa-d94d-11e7-979c-e7de995c9646.png" alt="Skylight"></p>
+
+<aside class="notes">
+
+<p>… Rails に特化したプロファイリングサービス Skylight。つまり Rails に特化した NewRelic ですね。そして Tilde の社長は有名人で…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/33558916-80c1f228-d94e-11e7-9b79-91285acfe6f0.png" alt="Yehuda Katz"></p>
+
+<aside class="notes">
+
+<p>…あの Merb のメンテナー Yehuda Katz 先生です。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://image.slidesharecdn.com/merb-1233821025599755-1/95/rails-and-merb-2-728.jpg?cb=1233799578" alt="merb"></p>
+
+<aside class="notes">
+
+<p>Merb 知らない人いますか？ Rails 2 をモジュール化・高速化したフレームワークでした。そして Rails 3 にマージされた。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>The (Non-Perfect) Mathematics of Trust</h2>
+
+<h3>日本語サマリー</h3>
+
+<aside class="notes">
+
+<p>さて歴史的経緯は以上で、本題に入ります。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://3d.bk.tudelft.nl/ken/en/thesis/figs/konigsberg.jpg" alt="ケーニヒスベルク"></p>
+
+<p>プロイセン公国ケーニヒスベルク市<br>
+1735 年</p>
+
+<aside class="notes">
+
+<p>昔々プロイセン公国の首都ケーニヒスベルクには橋が 7 本ありました。各橋を一度だけ渡るルートはないかというパズルが市民の間で流行ってた。しかし解ける人はなかなかいなかった。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/34769911-9e3d1862-f642-11e7-9294-cf60e09ae232.png" alt="レオンハルト・オイラー"></p>
+
+<p>レオンハルト・オイラー<br>
+(1707年〜1783年)</p>
+
+<aside class="notes">
+
+<p>そのうちスイス人数学者レオンハルト・オイラーも挑戦してみることになった。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/The_Seven_Bridges_of_K%C3%B6nigsberg%2C_Fig._1.png" alt="オイラーのグラフ図"></p>
+
+<aside class="notes">
+
+<p>オイラーは抽象化した図に落としたことで…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/34771885-739d04e4-f649-11e7-84b1-3dc9095f7a3c.png" alt="オイラーのグラフ図"></p>
+
+<p><img class="emoji" alt=":birthday:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f382.png"> グラフ理論 <img class="emoji" alt=":birthday:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f382.png"></p>
+
+<aside class="notes">
+
+<p>グラフ理論誕生！</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/34771885-739d04e4-f649-11e7-84b1-3dc9095f7a3c.png" alt="オイラーのグラフ図"></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>ケーニヒスベルク</th>
+      <th>記号</th>
+      <th>グラフ理論用語</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>橋</td>
+      <td>線</td>
+      <td>エッジ</td>
+    </tr>
+    <tr>
+      <td>陸地</td>
+      <td>節点</td>
+      <td>ノード</td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="notes">
+
+<p>橋を表す線のことを「エッジ」と呼びます。そして陸地を表す節点は「ノード」と呼びます。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/34772712-62c6c738-f64c-11e7-969a-64c461ec5a92.png" alt="オイラー路"></p>
+
+<p>オイラー路</p>
+
+<aside class="notes">
+
+<p>なお一筆書き可能なルートを「オイラー路」と言います。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/34772522-8b74e274-f64b-11e7-9104-cb95c057ea91.png" alt="オイラー路成立不可"></p>
+
+<p>オイラー路不成立 <img class="emoji" alt=":crying_cat_face:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f63f.png"></p>
+
+<aside class="notes">
+
+<p>しかしケーニヒスベルクの場合は、オイラー路が成立しないという判断に至りました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<ul>
+  <li>SNS のソーシャルグラフ</li>
+  <li>Google の PageRank アルゴリズム</li>
+  <li>AirBnB 信頼制度</li>
+</ul>
+
+<aside class="notes">
+
+<p>グラフ理論はいろんな分野で応用されていますが…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/34773749-28066ac8-f650-11e7-9e0e-b3a503be7c76.png" alt="Facebook、「米大統領選でのロシアによる不正広告は1000万人が見た」"></p>
+
+<aside class="notes">
+
+<p>…まだまだ未熟だというのは、ここ最近の出来事で分かりました。Vaidehi さんはこれで…</p>
+
+</aside>
+
+</section>
+<section>
+
+<h3>The (Non-Perfect) Mathematics of Trust</h3>
+
+<h2>信頼の（不完全な）数学</h2>
+
+<aside class="notes">
+
+<p>…トークのタイトルと結びつきました。さてケーニヒスベルクに戻りましょう。</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/34774405-8ca2d1b8-f652-11e7-97ca-75c5a9d1041d.png" alt="カリーニングラード"></p>
+
+<aside class="notes">
+
+<p>今はロシア領土となり、名前が「カリーニングラード」に変わりました。そして第二次世界大戦の空襲で橋が 2 本なくなり…</p>
+
+</aside>
+
+</section>
+<section>
+
+<p><img src="https://user-images.githubusercontent.com/1012322/34774720-c24053c6-f653-11e7-91ca-5feb2d6516d9.png" alt="カリーニングラードのオイラー路"></p>
+
+<aside class="notes">
+
+<p>…今ならオイラー路が成立するようになりました。</p>
+
+</aside>
+
+</section>
+<section>
+
+<h2>The (Non-Perfect) Mathematics of Trust</h2>
+
+<h3>日本語サマリー</h3>
+
+<aside class="notes">
+
+<p>以上です。</p>
+
+</aside>
+
+</section>
