@@ -1,0 +1,56 @@
+version: 1
+update_configs:
+  - package_manager: "javascript"
+    directory: "/get_a_whiff_of_this/"
+    update_schedule: "daily"
+    default_reviewers:
+      - "rastamhadi"
+    automerged_updates:
+      - match:
+          dependency_type: "all"
+          update_type: "all"
+  - package_manager: "javascript"
+    directory: "/lt_slides_server/"
+    update_schedule: "daily"
+    default_reviewers:
+      - "rastamhadi"
+    automerged_updates:
+      - match:
+          dependency_type: "all"
+          update_type: "all"
+  - package_manager: "javascript"
+    directory: "/making_friends_with_graphs/"
+    update_schedule: "daily"
+    default_reviewers:
+      - "rastamhadi"
+    automerged_updates:
+      - match:
+          dependency_type: "all"
+          update_type: "all"
+  - package_manager: "javascript"
+    directory: "/slack_notification_command/"
+    update_schedule: "daily"
+    default_reviewers:
+      - "rastamhadi"
+    automerged_updates:
+      - match:
+          dependency_type: "all"
+          update_type: "all"
+  - package_manager: "javascript"
+    directory: "/the_maths_of_trust/"
+    update_schedule: "daily"
+    default_reviewers:
+      - "rastamhadi"
+    automerged_updates:
+      - match:
+          dependency_type: "all"
+          update_type: "all"
+  - package_manager: "javascript"
+    directory: "/web_speech_api/"
+    update_schedule: "daily"
+    default_reviewers:
+      - "rastamhadi"
+    automerged_updates:
+      - match:
+          dependency_type: "all"
+          update_type: "all"
