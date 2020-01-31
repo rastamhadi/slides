@@ -1,0 +1,29 @@
+name: Get A Whiff of This CI
+
+on: [push]
+  # push:
+  #   paths:
+  #   - 'get_a_whiff_of_this/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Use Node.js 12.12
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.12'
+    - name: Install NPM packages
+      working-directory: ./get_a_whiff_of_this
+      run: |
+        npm install -g grunt-cli
+        npm install
+    - name: Run tests
+      run: npm test
+      working-directory: ./get_a_whiff_of_this
+      env:
+        CI: true
